@@ -1,0 +1,91 @@
+﻿<div ng-controller="ProductsController as prodCtrl">
+    <section class="section">
+        <div class="products-toolbar clearfix">
+            <div class="toolbar-left">
+                <h2 class="section-title">
+                    Products
+                    <span class="result-count">({{ prodCtrl.filteredProducts().length }} items)</span>
+                </h2>
+            </div>
+            <div class="toolbar-right">
+                <select ng-model="prodCtrl.sortBy" class="sort-select">
+                    <option value="default">Sort: Default</option>
+                    <option value="priceLow">Price: Low to High</option>
+                    <option value="priceHigh">Price: High to Low</option>
+                    <option value="rating">Best Rated</option>
+                </select>
+            </div>
+        </div>
+        <div class="filters-panel">
+            <input class="search-box" ng-model="prodCtrl.searchText" ng-change="prodCtrl.load()"
+                placeholder="Search name, brand, category" /><select class="sort-select"
+                ng-model="prodCtrl.selectedBrand" ng-change="prodCtrl.load()"
+                ng-options="b for b in prodCtrl.brands"></select><input class="search-box short" type="number"
+                ng-model="prodCtrl.minPrice" ng-change="prodCtrl.load()" placeholder="Min price" /><input
+                class="search-box short" type="number" ng-model="prodCtrl.maxPrice" ng-change="prodCtrl.load()"
+                placeholder="Max price" /><select class="sort-select" ng-model="prodCtrl.minRating"
+                ng-change="prodCtrl.load()">
+                <option value="">Any rating</option>
+                <option value="4">4+ stars</option>
+                <option value="4.5">4.5+ stars</option>
+            </select><label class="checkbox-filter"><input type="checkbox" ng-model="prodCtrl.stock"
+                    ng-true-value="'in'" ng-false-value="''" ng-change="prodCtrl.load()" />
+                In stock</label>
+        </div>
+        <div class="cat-filter-row clearfix">
+            <button ng-repeat="cat in prodCtrl.categories" class="cat-filter-btn"
+                ng-class="{ active: prodCtrl.selectedCat === cat }" ng-click="prodCtrl.filterCat(cat)">
+                {{ cat }}
+            </button>
+        </div>
+        <div class="product-grid clearfix">
+            <div class="product-card" ng-repeat="product in prodCtrl.filteredProducts()">
+                <button class="wishlist-dot" ng-click="navCtrl.toggleWishlist(product)">
+                    ♡</button><a href="#!/products/{{ product.id }}">
+                    <div class="product-badge" ng-if="product.badge">
+                        {{ product.badge }}
+                    </div>
+                    <div class="product-img-wrap">
+                        <img ng-src="{{ product.image }}" alt="{{ product.name }}" class="product-img" />
+                    </div>
+                </a>
+                <div class="product-info">
+                    <span class="product-cat">{{ product.category }} / {{ product.brand }}</span><a
+                        href="#!/products/{{ product.id }}">
+                        <h3 class="product-name">{{ product.name }}</h3>
+                    </a>
+                    <div class="product-rating">
+                        <span class="stars">{{ prodCtrl.stars(product.rating) }}</span><span class="review-count">({{
+                            product.reviews }})</span>
+                    </div>
+                    <p class="stock-label"
+                        ng-class="{ danger: product.stock === 0, warn: product.stock > 0 && product.stock <= 5 }">
+                        {{ product.stock === 0 ? 'Out of stock' : product.stock <= 5 ? 'Only
+            ' + product.stock + ' left' : 'In stock' }} </p>
+                            <div class="product-price-row clearfix">
+                                <span class="product-price">Rs.{{ product.price }}</span><span
+                                    class="product-original">Rs.{{ product.originalPrice }}</span><span
+                                    class="product-discount">{{ prodCtrl.discount(product) }}% off</span>
+                            </div>
+                            <button class="btn btn-primary add-cart-btn" ng-if="!navCtrl.getCartItem(product)"
+                                ng-disabled="product.stock === 0" ng-click="navCtrl.addToCart(product)">
+                                Add to Cart
+                            </button>
+                            <div class="card-qty-controls" ng-if="navCtrl.getCartItem(product)">
+                                <button class="qty-btn" ng-click="navCtrl.decreaseQty(navCtrl.getCartItem(product))">
+                                    -</button><span class="qty-value">{{ navCtrl.getCartItem(product).quantity
+                                    }}</span><button class="qty-btn"
+                                    ng-click="navCtrl.increaseQty(navCtrl.getCartItem(product))">
+                                    +
+                                </button>
+                            </div>
+                </div>
+            </div>
+        </div>
+        <div class="empty-state" ng-if="prodCtrl.filteredProducts().length === 0">
+            <div class="empty-icon">Search</div>
+            <h3>No products found</h3>
+            <p>Try a different search term or filter.</p>
+        </div>
+    </section>
+</div>

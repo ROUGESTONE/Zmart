@@ -1,0 +1,94 @@
+﻿<section class="section" ng-controller="AdminController as adminCtrl">
+  <h2 class="section-title">Admin Panel</h2>
+
+  <div class="cat-filter-row">
+    <button class="cat-filter-btn" ng-class="{active: adminCtrl.tab==='products'}" ng-click="adminCtrl.tab='products'">Products</button>
+    <button class="cat-filter-btn" ng-class="{active: adminCtrl.tab==='orders'}" ng-click="adminCtrl.tab='orders'">Orders</button>
+    <button class="cat-filter-btn" ng-class="{active: adminCtrl.tab==='messages'}" ng-click="adminCtrl.tab='messages'">Messages</button>
+  </div>
+
+  <div class="success-msg" ng-if="adminCtrl.notice">{{ adminCtrl.notice }}</div>
+  <div class="error-msg" ng-if="adminCtrl.error">{{ adminCtrl.error }}</div>
+
+  <div ng-if="adminCtrl.tab==='products'" class="admin-grid">
+    <div class="contact-form-box">
+      <h3>{{ adminCtrl.editing ? 'Edit Product' : 'Add Product' }}</h3>
+
+      <div class="form-group">
+        <label>Product Name</label>
+        <input class="form-input" placeholder="e.g. Pillow" ng-model="adminCtrl.product.name" />
+      </div>
+      <div class="form-group">
+        <label>Brand</label>
+        <input class="form-input" placeholder="e.g. Calm" ng-model="adminCtrl.product.brand" />
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input class="form-input" placeholder="e.g. Home" ng-model="adminCtrl.product.category" />
+      </div>
+      <div class="form-group">
+        <label>Selling Price</label>
+        <input class="form-input" type="number" min="0" placeholder="700" ng-model="adminCtrl.product.price" />
+      </div>
+      <div class="form-group">
+        <label>Original Price</label>
+        <input class="form-input" type="number" min="0" placeholder="1000" ng-model="adminCtrl.product.originalPrice" />
+      </div>
+      <div class="form-group stock-edit-group">
+        <label>Stock Quantity</label>
+        <input class="form-input stock-edit-input" type="number" min="0" step="1" placeholder="0" ng-model="adminCtrl.product.stock" />
+        <small>Set this to 0 to mark the product as out of stock.</small>
+      </div>
+      <div class="form-group">
+        <label>Badge</label>
+        <input class="form-input" placeholder="Sale, New, Best Seller" ng-model="adminCtrl.product.badge" />
+      </div>
+      <div class="form-group">
+        <label>Image URL</label>
+        <input class="form-input" placeholder="https://..." ng-model="adminCtrl.product.image" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-input form-textarea" placeholder="Product description" ng-model="adminCtrl.product.description"></textarea>
+      </div>
+
+      <button class="btn btn-primary" ng-click="adminCtrl.save()">{{ adminCtrl.editing ? 'Save Changes' : 'Add Product' }}</button>
+      <button class="btn btn-outline" ng-click="adminCtrl.cancel()">Clear</button>
+    </div>
+
+    <table class="data-table">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Actions</th>
+      </tr>
+      <tr ng-repeat="p in adminCtrl.products">
+        <td>{{ p.name }}</td>
+        <td>Rs.{{ p.price }}</td>
+        <td>
+          <strong ng-class="{ 'stock-danger': p.stock <= 0, 'stock-warn': p.stock > 0 && p.stock <= 5 }">{{ p.stock }}</strong>
+        </td>
+        <td>
+          <button class="remove-btn" ng-click="adminCtrl.edit(p)">Edit</button>
+          <button class="remove-btn" ng-click="adminCtrl.delete(p)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div ng-if="adminCtrl.tab==='orders'">
+    <table class="data-table">
+      <tr><th>Order</th><th>Total</th><th>Payment</th><th>Delivery</th></tr>
+      <tr ng-repeat="o in adminCtrl.orders"><td>{{ o.id }}</td><td>Rs.{{ o.total }}</td><td>{{ o.paymentStatus }}</td><td>{{ o.deliveryStatus }}</td></tr>
+    </table>
+  </div>
+
+  <div ng-if="adminCtrl.tab==='messages'">
+    <div class="order-card" ng-repeat="m in adminCtrl.messages">
+      <h3>{{ m.name }} - {{ m.email }}</h3>
+      <p>{{ m.message }}</p>
+      <small>{{ m.date | date:'medium' }}</small>
+    </div>
+  </div>
+</section>

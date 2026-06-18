@@ -1,0 +1,44 @@
+﻿<section class="section" ng-controller="InvoiceController as invCtrl" ng-if="invCtrl.order">
+    <div class="invoice">
+        <h2>ZMart Invoice</h2>
+        <p><strong>Order ID:</strong> {{ invCtrl.order.id }}</p>
+        <p><strong>Date:</strong> {{ invCtrl.order.date | date:'medium' }}</p>
+        <p>
+            <strong>Ship To:</strong> {{ invCtrl.order.address.line1 }}, {{
+            invCtrl.order.address.city }}, {{ invCtrl.order.address.state }} - {{
+            invCtrl.order.address.pincode }}
+        </p>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in invCtrl.order.items">
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.quantity }}</td>
+                    <td>Rs.{{ i.price }}</td>
+                    <td>Rs.{{ i.total }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="summary-row clearfix">
+            <span>Subtotal</span><span>Rs.{{ invCtrl.order.subtotal }}</span>
+        </div>
+        <div class="summary-row clearfix">
+            <span>Discount</span><span>Rs.{{ invCtrl.order.liveDiscount + invCtrl.order.couponDiscount
+                }}</span>
+        </div>
+        <div class="summary-row clearfix">
+            <span>Delivery</span><span>Rs.{{ invCtrl.order.deliveryCharge }}</span>
+        </div>
+        <div class="summary-row summary-total clearfix">
+            <strong>Total</strong><strong>Rs.{{ invCtrl.order.total }}</strong>
+        </div>
+        <p><strong>Payment Status:</strong> {{ invCtrl.order.paymentStatus }}</p>
+    </div>
+</section>

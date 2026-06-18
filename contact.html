@@ -1,0 +1,78 @@
+﻿<section class="section" ng-controller="ContactController as contactCtrl">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-sub">
+        We would love to hear from you. Messages are stored in the backend for admin
+        review.
+    </p>
+    <div class="contact-layout clearfix">
+        <div class="contact-info-col">
+            <div class="contact-card">
+                <div class="contact-item">
+                    <span class="contact-icon">@</span>
+                    <div>
+                        <strong>Email</strong>
+                        <p>support@zmart.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">☎</span>
+                    <div>
+                        <strong>Phone</strong>
+                        <p>+91 9876543210</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⏱</span>
+                    <div>
+                        <strong>Support Hours</strong>
+                        <p>Monday - Saturday, 9am - 6pm</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⌂</span>
+                    <div>
+                        <strong>Address</strong>
+                        <p>ZMart HQ, Connaught Place, New Delhi - 110001</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form-col">
+            <div class="contact-form-box">
+                <h3>Send us a message</h3>
+                <form name="contactForm" ng-submit="contactCtrl.send(contactForm)" novalidate>
+                    <div class="form-group">
+                        <label>Your Name</label><input type="text" name="name" ng-model="contactCtrl.form.name"
+                            class="form-input" required />
+                        <p class="form-error" ng-if="contactForm.$submitted && contactForm.name.$invalid">
+                            Please enter your name.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label><input type="email" name="email" ng-model="contactCtrl.form.email"
+                            class="form-input" required />
+                        <p class="form-error" ng-if="contactForm.$submitted && contactForm.email.$invalid">
+                            Please enter a valid email address.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label><textarea name="message" ng-model="contactCtrl.form.message"
+                            class="form-input form-textarea" rows="4" required></textarea>
+                        <p class="form-error" ng-if="contactForm.$submitted && contactForm.message.$invalid">
+                            Please write your message.
+                        </p>
+                    </div>
+                    <button class="btn btn-primary full-btn" type="submit">
+                        Send Message
+                    </button>
+                </form>
+                <div class="success-msg contact-success" ng-if="contactCtrl.submitted">
+                    Thanks! Your message has been saved.
+                </div>
+                <div class="error-msg contact-success" ng-if="contactCtrl.error">
+                    {{ contactCtrl.error }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

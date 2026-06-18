@@ -1,0 +1,26 @@
+﻿<section class="section" ng-controller="AuthController as authCtrl">
+    <div class="auth-card">
+        <h2 class="section-title">Login</h2>
+        <p class="section-sub">
+            Access your cart, orders, wishlist, and saved addresses.
+        </p>
+        <form name="loginForm" ng-submit="authCtrl.login(loginForm)" novalidate>
+            <div class="form-group">
+                <label>Email</label><input class="form-input" type="email" name="email" ng-model="authCtrl.form.email"
+                    required />
+            </div>
+            <div class="form-group">
+                <label>Password</label><input class="form-input" type="password" name="password"
+                    ng-model="authCtrl.form.password" required />
+            </div>
+            <button class="btn btn-primary full-btn">Login</button>
+            <div class="error-msg" ng-if="authCtrl.error">{{ authCtrl.error }}</div>
+        </form>
+        <p class="auth-switch">
+            New to ZMart? <a href="#!/signup">Create account</a>
+        </p>
+        <p class="section-sub small">
+            Demo: demo@zmart.com / Demo@123<br />Admin: admin@zmart.com / Admin@123
+        </p>
+    </div>
+</section>

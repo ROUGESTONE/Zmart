@@ -1,0 +1,102 @@
+﻿<div ng-controller="HomeController as homeCtrl">
+    <section class="hero clearfix">
+        <div class="hero-text">
+            <div class="hero-eyebrow">Limited Time Sale</div>
+            <h1 class="hero-title">Shop Smarter.<br />Live Better.</h1>
+            <p class="hero-sub">
+                Unbeatable prices. Fast delivery. Top brands - all in one place.
+            </p>
+            <a href="#!/products" class="btn btn-primary hero-cta">Shop Now</a><a href="#!/deals"
+                class="btn btn-outline hero-cta">View Deals</a>
+        </div>
+        <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900" alt="Shopping"
+                class="hero-img" />
+        </div>
+    </section>
+    <section class="badges-row clearfix">
+        <div class="badge-item">
+            <span class="badge-icon">🚚</span><strong>Free Delivery</strong>
+            <p>On orders above Rs.999</p>
+        </div>
+        <div class="badge-item">
+            <span class="badge-icon">↩</span><strong>Easy Returns</strong>
+            <p>7-day returns</p>
+        </div>
+        <div class="badge-item">
+            <span class="badge-icon">🔒</span><strong>Secure Payments</strong>
+            <p>Backend verified</p>
+        </div>
+        <div class="badge-item">
+            <span class="badge-icon">★</span><strong>Top Brands</strong>
+            <p>Genuine products</p>
+        </div>
+    </section>
+    <section class="section">
+        <div class="section-header clearfix">
+            <h2 class="section-title">Featured Products</h2>
+            <a href="#!/products" class="section-link">View All</a>
+        </div>
+        <div class="product-grid clearfix">
+            <div class="product-card" ng-repeat="product in homeCtrl.featured">
+                <button class="wishlist-dot" ng-click="navCtrl.toggleWishlist(product)">
+                    ♡</button><a href="#!/products/{{ product.id }}">
+                    <div class="product-badge" ng-if="product.badge">
+                        {{ product.badge }}
+                    </div>
+                    <div class="product-img-wrap">
+                        <img ng-src="{{ product.image }}" alt="{{ product.name }}" class="product-img" />
+                    </div>
+                </a>
+                <div class="product-info">
+                    <span class="product-cat">{{ product.category }} / {{ product.brand }}</span><a
+                        href="#!/products/{{ product.id }}">
+                        <h3 class="product-name">{{ product.name }}</h3>
+                    </a>
+                    <div class="product-rating">
+                        <span class="stars">{{ homeCtrl.stars(product.rating) }}</span><span class="review-count">({{
+                            product.reviews }})</span>
+                    </div>
+                    <p class="stock-label"
+                        ng-class="{ danger: product.stock === 0, warn: product.stock > 0 && product.stock <= 5 }">
+                        {{ product.stock === 0 ? 'Out of stock' : product.stock <= 5 ? 'Only
+            ' + product.stock + ' left' : 'In stock' }} </p>
+                            <div class="product-price-row clearfix">
+                                <span class="product-price">Rs.{{ product.price }}</span><span
+                                    class="product-original">Rs.{{ product.originalPrice }}</span><span
+                                    class="product-discount">{{ homeCtrl.discount(product) }}% off</span>
+                            </div>
+                            <button class="btn btn-primary add-cart-btn" ng-if="!navCtrl.getCartItem(product)"
+                                ng-disabled="product.stock === 0" ng-click="navCtrl.addToCart(product)">
+                                Add to Cart
+                            </button>
+                            <div class="card-qty-controls" ng-if="navCtrl.getCartItem(product)">
+                                <button class="qty-btn" ng-click="navCtrl.decreaseQty(navCtrl.getCartItem(product))">
+                                    -</button><span class="qty-value">{{ navCtrl.getCartItem(product).quantity
+                                    }}</span><button class="qty-btn"
+                                    ng-click="navCtrl.increaseQty(navCtrl.getCartItem(product))">
+                                    +
+                                </button>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cat-banner-section clearfix">
+        <div class="cat-banner cat-electronics">
+            <h3>Electronics</h3>
+            <p>Up to 25% off</p>
+            <a href="#!/products" class="btn btn-outline-white">Shop</a>
+        </div>
+        <div class="cat-banner cat-fashion">
+            <h3>Fashion</h3>
+            <p>Fresh drops and deals</p>
+            <a href="#!/products" class="btn btn-outline-white">Shop</a>
+        </div>
+        <div class="cat-banner cat-accessories">
+            <h3>Accessories</h3>
+            <p>Starting at Rs.499</p>
+            <a href="#!/products" class="btn btn-outline-white">Shop</a>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,62 @@
+﻿<section class="section">
+    <h2 class="section-title">
+        Your Cart
+        <span class="result-count" ng-if="navCtrl.cart.length">({{ navCtrl.cart.length }} items)</span>
+    </h2>
+    <div class="empty-state" ng-if="navCtrl.cart.length === 0">
+        <div class="empty-icon">Cart</div>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you have not added anything yet.</p>
+        <a href="#!/products" class="btn btn-primary">Browse Products</a>
+    </div>
+    <div class="cart-layout clearfix" ng-if="navCtrl.cart.length > 0">
+        <div class="cart-items-col">
+            <div class="cart-item clearfix" ng-repeat="item in navCtrl.cart">
+                <div class="cart-item-img-wrap">
+                    <img ng-src="{{ item.image }}" class="cart-item-img" />
+                </div>
+                <div class="cart-item-details">
+                    <h4 class="cart-item-name">{{ item.name }}</h4>
+                    <p class="cart-item-unit">
+                        Unit price: Rs.{{ item.price }} | Stock: {{ item.stock }}
+                    </p>
+                    <div class="qty-controls clearfix">
+                        <button class="qty-btn" ng-click="navCtrl.decreaseQty(item)">
+                            -</button><span class="qty-value">{{ item.quantity }}</span><button class="qty-btn"
+                            ng-click="navCtrl.increaseQty(item)">
+                            +
+                        </button>
+                    </div>
+                </div>
+                <div class="cart-item-right">
+                    <span class="cart-item-total">Rs.{{ navCtrl.getItemTotal(item) }}</span><button class="remove-btn"
+                        ng-click="navCtrl.removeFromCart(item)">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="cart-summary-col">
+            <div class="cart-summary-box">
+                <h3 class="summary-title">Order Summary</h3>
+                <div class="summary-row clearfix">
+                    <span>Subtotal</span><span>Rs.{{ navCtrl.getTotal() }}</span>
+                </div>
+                <div class="summary-row clearfix">
+                    <span>Delivery</span><span ng-if="navCtrl.getDeliveryCharge() === 0"
+                        class="text-green">FREE</span><span ng-if="navCtrl.getDeliveryCharge() > 0">Rs.{{
+                        navCtrl.getDeliveryCharge() }}</span>
+                </div>
+                <div class="summary-row clearfix">
+                    <span>Live Discount</span><span class="text-green">-Rs.{{ navCtrl.getDiscount() }}</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row summary-total clearfix">
+                    <strong>Total</strong><strong>Rs.{{ navCtrl.getPayableTotal() }}</strong>
+                </div>
+                <a class="btn btn-primary checkout-btn" href="#!/checkout">Checkout</a><a href="#!/products"
+                    class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</section>

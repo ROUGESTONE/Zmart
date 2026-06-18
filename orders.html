@@ -1,0 +1,23 @@
+﻿<section class="section" ng-controller="OrdersController as ordersCtrl">
+    <h2 class="section-title">Order History</h2>
+    <div class="empty-state" ng-if="!ordersCtrl.orders.length">
+        <h3>No orders yet</h3>
+        <a class="btn btn-primary" href="#!/products">Start Shopping</a>
+    </div>
+    <div class="order-card" ng-repeat="o in ordersCtrl.orders">
+        <div class="order-head clearfix">
+            <div>
+                <h3>{{ o.id }}</h3>
+                <p>{{ o.date | date:'medium' }}</p>
+            </div>
+            <div>
+                <strong>Rs.{{ o.total }}</strong>
+                <p>{{ o.paymentStatus }} / {{ o.deliveryStatus }}</p>
+            </div>
+        </div>
+        <div class="mini-item" ng-repeat="i in o.items">
+            <img ng-src="{{ i.image }}" /><span>{{ i.name }} x {{ i.quantity }}</span><strong>Rs.{{ i.total }}</strong>
+        </div>
+        <a class="btn btn-outline" href="#!/invoice/{{ o.id }}">Invoice</a>
+    </div>
+</section>

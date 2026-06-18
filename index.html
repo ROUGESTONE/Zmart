@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html lang="en" ng-app="zmartApp">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZMart - Shop Smarter</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-controller="NavbarController as navCtrl">
+    <div class="top-bar clearfix">
+        <div class="top-bar-inner clearfix">
+            <span class="top-bar-left">Free delivery on orders above Rs.999</span><span class="top-bar-right">Support:
+                Mon-Sat | support@zmart.com</span>
+        </div>
+    </div>
+    <header class="navbar clearfix">
+        <div class="navbar-inner clearfix">
+            <a class="brand" href="#!/">ZMart</a>
+            <button class="hamburger" ng-click="navCtrl.menuOpen = !navCtrl.menuOpen">
+                ☰
+            </button>
+            <form class="navbar-search" ng-submit="navCtrl.goSearch()">
+                <input type="text" placeholder="Search products..." ng-model="navCtrl.globalSearch"
+                    ng-change="navCtrl.syncSearch()" class="navbar-search-input" />
+                <button class="navbar-search-btn" type="submit">Search</button>
+                <div class="suggestions" ng-if="navCtrl.suggestions.length">
+                    <button type="button" ng-repeat="p in navCtrl.suggestions" ng-click="navCtrl.goSearch(p.name)">
+                        {{ p.name }} <small>{{ p.category }}</small>
+                    </button>
+                </div>
+            </form>
+            <nav class="nav-links" ng-class="{ open: navCtrl.menuOpen }">
+                <a ng-repeat="link in navCtrl.links" ng-href="{{ link.href }}"
+                    ng-class="{ active: navCtrl.isActive(link.href) }">{{ link.text }}<span
+                        ng-if="link.text === 'Cart' && navCtrl.cart.length" class="cart-badge">{{ navCtrl.cart.length
+                        }}</span></a>
+                <a href="#!/admin" ng-if="navCtrl.user() && navCtrl.user().role === 'admin'">Admin</a>
+                <a href="#!/orders" ng-if="navCtrl.user()">Orders</a>
+                <a href="#!/profile" ng-if="navCtrl.user()">Hi, {{ navCtrl.user().name.split(' ')[0] }}</a>
+                <a href="#!/login" ng-if="!navCtrl.user()">Login</a>
+                <button class="nav-logout" ng-if="navCtrl.user()" ng-click="navCtrl.logout()">
+                    Logout
+                </button>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="error-msg" ng-if="navCtrl.cartError">
+            {{ navCtrl.cartError }}
+        </div>
+        <div ng-view></div>
+    </div>
+    <footer class="footer clearfix">
+        <div class="footer-inner clearfix">
+            <div class="footer-col">
+                <h4>ZMart</h4>
+                <p>Shop smarter with amazing deals and fast delivery across India.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Links</h4>
+                <a ng-repeat="link in navCtrl.links" ng-href="{{ link.href }}" class="footer-link">{{ link.text
+                    }}<br /></a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>support@zmart.com</p>
+                <p>+91 9876543210</p>
+                <p>Mon-Sat, 9am-6pm</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 ZMart. All rights reserved.</div>
+    </footer>
+</body>
+
+</html>

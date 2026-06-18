@@ -1,0 +1,67 @@
+﻿<section class="section" ng-controller="ProductDetailController as detailCtrl">
+    <div class="error-msg" ng-if="detailCtrl.error">{{ detailCtrl.error }}</div>
+    <div ng-if="detailCtrl.product">
+        <div class="detail-layout clearfix">
+            <div class="detail-image-col">
+                <img ng-src="{{ detailCtrl.product.image }}" alt="{{ detailCtrl.product.name }}" class="detail-image" />
+            </div>
+            <div class="detail-info-col">
+                <span class="product-cat">{{ detailCtrl.product.category }} / {{ detailCtrl.product.brand
+                    }}</span>
+                <h2 class="section-title">{{ detailCtrl.product.name }}</h2>
+                <div class="product-rating">
+                    <span class="stars">{{ detailCtrl.stars(detailCtrl.product.rating) }}</span><span
+                        class="review-count">{{ detailCtrl.product.rating }} ({{ detailCtrl.product.reviews }}
+                        reviews)</span>
+                </div>
+                <div class="detail-price">
+                    <span class="product-price">Rs.{{ detailCtrl.product.price }}</span><span
+                        class="product-original">Rs.{{ detailCtrl.product.originalPrice }}</span><span
+                        class="product-discount">{{ detailCtrl.discount(detailCtrl.product) }}% off</span>
+                </div>
+                <p class="stock-label big"
+                    ng-class="{ danger: detailCtrl.product.stock === 0, warn: detailCtrl.product.stock > 0 && detailCtrl.product.stock <= 5 }">
+                    {{ detailCtrl.stockLabel(detailCtrl.product) }}
+                </p>
+                <p class="detail-desc">{{ detailCtrl.product.description }}</p>
+                <div class="detail-actions">
+                    <label>Quantity</label><input class="qty-input" type="number" min="1"
+                        max="{{ detailCtrl.product.stock }}" ng-model="detailCtrl.qty" /><button class="btn btn-primary"
+                        ng-disabled="detailCtrl.product.stock === 0"
+                        ng-click="navCtrl.addToCart(detailCtrl.product, detailCtrl.qty)">
+                        Add to Cart</button><button class="btn btn-outline"
+                        ng-click="navCtrl.toggleWishlist(detailCtrl.product)">
+                        Wishlist
+                    </button>
+                </div>
+                <div class="error-msg" ng-if="detailCtrl.error">
+                    {{ detailCtrl.error }}
+                </div>
+                <div class="success-msg" ng-if="detailCtrl.success">
+                    {{ detailCtrl.success }}
+                </div>
+            </div>
+        </div>
+        <div class="reviews-panel">
+            <h3>Customer Reviews</h3>
+            <div class="review-item" ng-repeat="r in detailCtrl.product.reviewList">
+                <strong>{{ r.userName }}</strong><span class="stars">{{ detailCtrl.stars(r.rating) }}</span>
+                <p>{{ r.text }}</p>
+                <small>{{ r.date | date:'mediumDate' }}</small>
+            </div>
+            <form name="reviewForm" class="review-form" ng-submit="detailCtrl.submitReview(reviewForm)" novalidate>
+                <h4>Write a review</h4>
+                <select class="form-input" name="rating" ng-model="detailCtrl.review.rating" required>
+                    <option value="">Rating</option>
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select><textarea class="form-input form-textarea" name="text" ng-model="detailCtrl.review.text"
+                    placeholder="Share your experience" required></textarea><button class="btn btn-primary">Submit
+                    Review</button>
+            </form>
+        </div>
+    </div>
+</section>

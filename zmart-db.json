@@ -1,0 +1,418 @@
+{
+  "next": {
+    "user": 3,
+    "product": 18,
+    "order": 1003,
+    "message": 2,
+    "review": 1,
+    "address": 3,
+    "coupon": 4
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Headphones",
+      "price": 2999,
+      "originalPrice": 3999,
+      "category": "Electronics",
+      "brand": "ZBeat",
+      "badge": "Best Seller",
+      "stock": 18,
+      "description": "Premium wireless headphones with deep bass, cushioned earcups, and 30-hour battery life.",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700",
+      "rating": 4.5,
+      "reviews": 128,
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Running Shoes",
+      "price": 1999,
+      "originalPrice": 2799,
+      "category": "Fashion",
+      "brand": "Runova",
+      "badge": "Sale",
+      "stock": 9,
+      "description": "Lightweight running shoes with breathable mesh and cushioned soles for daily training.",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
+      "rating": 4.2,
+      "reviews": 85,
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Smart Watch",
+      "price": 4999,
+      "originalPrice": 6499,
+      "category": "Electronics",
+      "brand": "WristIQ",
+      "badge": "New",
+      "stock": 6,
+      "description": "Fitness-ready smart watch with heart-rate tracking, notifications, and a bright touch display.",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700",
+      "rating": 4.7,
+      "reviews": 210,
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Leather Backpack",
+      "price": 1499,
+      "originalPrice": 1999,
+      "category": "Accessories",
+      "brand": "UrbanPack",
+      "badge": "",
+      "stock": 13,
+      "description": "Durable everyday backpack with laptop sleeve, organizer pockets, and clean leather finish.",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700",
+      "rating": 4.3,
+      "reviews": 64,
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Bluetooth Speaker",
+      "price": 1299,
+      "originalPrice": 1799,
+      "category": "Electronics",
+      "brand": "ZBeat",
+      "badge": "Sale",
+      "stock": 21,
+      "description": "Portable speaker with punchy sound, splash resistance, and all-day playback.",
+      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=700",
+      "rating": 4.4,
+      "reviews": 97,
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Sunglasses",
+      "price": 899,
+      "originalPrice": 1199,
+      "category": "Accessories",
+      "brand": "ShadeCo",
+      "badge": "",
+      "stock": 4,
+      "description": "UV-protected sunglasses with lightweight frame and scratch-resistant lenses.",
+      "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=700",
+      "rating": 4,
+      "reviews": 43,
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Yoga Mat",
+      "price": 699,
+      "originalPrice": 999,
+      "category": "Sports",
+      "brand": "FlexFit",
+      "badge": "Best Seller",
+      "stock": 25,
+      "description": "Non-slip yoga mat with extra cushioning for home workouts and studio sessions.",
+      "image": "https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=700",
+      "rating": 4.6,
+      "reviews": 155,
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Casual T-Shirt",
+      "price": 499,
+      "originalPrice": 799,
+      "category": "Fashion",
+      "brand": "CottonLane",
+      "badge": "",
+      "stock": 30,
+      "description": "Soft cotton T-shirt with a relaxed everyday fit and fade-resistant color.",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700",
+      "rating": 4.1,
+      "reviews": 72,
+      "active": true
+    },
+    {
+      "id": 9,
+      "name": "Gaming Mouse",
+      "price": 1599,
+      "originalPrice": 2299,
+      "category": "Electronics",
+      "brand": "ClickPro",
+      "badge": "New",
+      "stock": 8,
+      "description": "RGB gaming mouse with adjustable DPI, programmable buttons, and low-latency tracking.",
+      "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=700",
+      "rating": 4.5,
+      "reviews": 118,
+      "active": true
+    },
+    {
+      "id": 10,
+      "name": "Desk Lamp",
+      "price": 1199,
+      "originalPrice": 1699,
+      "category": "Home",
+      "brand": "GlowDesk",
+      "badge": "",
+      "stock": 12,
+      "description": "Modern desk lamp with adjustable arm, warm LED light, and compact footprint.",
+      "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=700",
+      "rating": 4.3,
+      "reviews": 56,
+      "active": true
+    },
+    {
+      "id": 11,
+      "name": "Denim Jacket",
+      "price": 2499,
+      "originalPrice": 3499,
+      "category": "Fashion",
+      "brand": "CottonLane",
+      "badge": "Sale",
+      "stock": 5,
+      "description": "Classic denim jacket with sturdy stitching and a comfortable year-round layer.",
+      "image": "https://images.unsplash.com/photo-1543076447-215ad9ba6923?w=700",
+      "rating": 4.4,
+      "reviews": 91,
+      "active": true
+    },
+    {
+      "id": 12,
+      "name": "Travel Duffel Bag",
+      "price": 1899,
+      "originalPrice": 2599,
+      "category": "Accessories",
+      "brand": "UrbanPack",
+      "badge": "",
+      "stock": 10,
+      "description": "Spacious duffel bag for weekend trips with reinforced handles and shoe compartment.",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700",
+      "rating": 4.2,
+      "reviews": 61,
+      "active": true
+    },
+    {
+      "id": 13,
+      "name": "Resistance Bands",
+      "price": 599,
+      "originalPrice": 899,
+      "category": "Sports",
+      "brand": "FlexFit",
+      "badge": "Best Seller",
+      "stock": 35,
+      "description": "Set of resistance bands for strength training, stretching, and mobility routines.",
+      "image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzaXN0YW5jZSUyMGJhbmRzfGVufDB8fDB8fHww",
+      "rating": 4.6,
+      "reviews": 134,
+      "active": true,
+      "reviewList": []
+    },
+    {
+      "id": 14,
+      "name": "Coffee Maker",
+      "price": 3499,
+      "originalPrice": 4499,
+      "category": "Home",
+      "brand": "Brewly",
+      "badge": "New",
+      "stock": 7,
+      "description": "Compact coffee maker with fast brewing, reusable filter, and easy-clean carafe.",
+      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700",
+      "rating": 4.5,
+      "reviews": 78,
+      "active": true
+    },
+    {
+      "id": 15,
+      "name": "Portable Charger",
+      "price": 999,
+      "originalPrice": 1499,
+      "category": "Electronics",
+      "brand": "VoltGo",
+      "badge": "Sale",
+      "stock": 14,
+      "description": "Slim power bank with fast charging support and dual USB outputs.",
+      "image": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=700",
+      "rating": 4.4,
+      "reviews": 162,
+      "active": true
+    },
+    {
+      "id": 16,
+      "name": "Ceramic Plant Pot",
+      "price": 449,
+      "originalPrice": 699,
+      "category": "Home",
+      "brand": "NestHome",
+      "badge": "",
+      "stock": 90,
+      "description": "Minimal ceramic plant pot for desks, shelves, and indoor greenery.",
+      "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=700",
+      "rating": 4.1,
+      "reviews": 39,
+      "active": true,
+      "reviewList": []
+    },
+    {
+      "id": 17,
+      "active": true,
+      "rating": 0,
+      "reviews": 0,
+      "name": "Pillow",
+      "brand": "Calm",
+      "category": "Home",
+      "price": 700,
+      "originalPrice": 1000,
+      "stock": 500,
+      "image": "https://images.unsplash.com/photo-1629949009765-40fc74c9ec21?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGlsbG93fGVufDB8fDB8fHww",
+      "description": "A good quality pillow to sleep forever",
+      "reviewList": []
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "role": "admin",
+      "name": "ZMart Admin",
+      "email": "admin@zmart.com",
+      "phone": "9999999999",
+      "passwordHash": "258d17f577aa7af1e8b46cf932685039:9d8e994c53ce779540aec062e2e184cd20f1bb1a5fdccf4086052416aa555282",
+      "createdAt": "2026-06-18T07:05:54.638Z",
+      "addresses": []
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "name": "Demo User",
+      "email": "demo@zmart.com",
+      "phone": "9876543210",
+      "passwordHash": "a5c1aa24f6a0fc77e9235ead8ad952b9:cd9f0655d0164c931e159d4f8495c92e9a65800068d39578f8d906dd7d457917",
+      "createdAt": "2026-06-18T07:05:54.767Z",
+      "addresses": [
+        {
+          "id": 1,
+          "label": "Home",
+          "line1": "221 Market Street",
+          "city": "New Delhi",
+          "state": "Delhi",
+          "pincode": "110001",
+          "phone": "9876543210"
+        }
+      ]
+    }
+  ],
+  "carts": {
+    "2": []
+  },
+  "wishlists": {},
+  "orders": [
+    {
+      "id": "ZM1002",
+      "userId": 2,
+      "date": "2026-06-18T07:12:59.903Z",
+      "items": [
+        {
+          "productId": 17,
+          "name": "Pillow",
+          "image": "https://images.unsplash.com/photo-1629949009765-40fc74c9ec21?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGlsbG93fGVufDB8fDB8fHww",
+          "price": 700,
+          "quantity": 20,
+          "total": 14000
+        }
+      ],
+      "subtotal": 14000,
+      "liveDiscount": 1400,
+      "coupon": null,
+      "couponDiscount": 0,
+      "deliveryCharge": 0,
+      "total": 12600,
+      "address": {
+        "id": 1,
+        "label": "Home",
+        "line1": "221 Market Street",
+        "city": "New Delhi",
+        "state": "Delhi",
+        "pincode": "110001",
+        "phone": "9876543210"
+      },
+      "paymentMethod": "cod",
+      "paymentStatus": "Pending",
+      "paymentRef": "",
+      "deliveryStatus": "Placed",
+      "orderStatus": "Placed"
+    },
+    {
+      "id": "ZM1001",
+      "userId": 2,
+      "date": "2026-06-18T07:09:44.470Z",
+      "items": [
+        {
+          "productId": 15,
+          "name": "Portable Charger",
+          "image": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=700",
+          "price": 999,
+          "quantity": 2,
+          "total": 1998
+        }
+      ],
+      "subtotal": 1998,
+      "liveDiscount": 0,
+      "coupon": null,
+      "couponDiscount": 0,
+      "deliveryCharge": 0,
+      "total": 1998,
+      "address": {
+        "id": 1,
+        "label": "Home",
+        "line1": "221 Market Street",
+        "city": "New Delhi",
+        "state": "Delhi",
+        "pincode": "110001",
+        "phone": "9876543210"
+      },
+      "paymentMethod": "upi",
+      "paymentStatus": "Pending verification",
+      "paymentRef": "",
+      "deliveryStatus": "Placed",
+      "orderStatus": "Placed"
+    }
+  ],
+  "contactMessages": [
+    {
+      "id": 1,
+      "name": "Nehal",
+      "email": "happy@gah.com",
+      "message": "123",
+      "date": "2026-06-18T07:22:05.792Z",
+      "status": "New"
+    }
+  ],
+  "reviews": [],
+  "coupons": [
+    {
+      "id": 1,
+      "code": "ZMART200",
+      "type": "flat",
+      "value": 200,
+      "minOrder": 999,
+      "expiresAt": "2099-12-31",
+      "active": true
+    },
+    {
+      "id": 2,
+      "code": "SAVE10",
+      "type": "percent",
+      "value": 10,
+      "minOrder": 1500,
+      "expiresAt": "2099-12-31",
+      "active": true
+    },
+    {
+      "id": 3,
+      "code": "FASHION15",
+      "type": "percent",
+      "value": 15,
+      "minOrder": 2000,
+      "expiresAt": "2099-12-31",
+      "active": true
+    }
+  ]
+}

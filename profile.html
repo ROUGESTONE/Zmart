@@ -1,0 +1,35 @@
+﻿<section class="section" ng-controller="ProfileController as profileCtrl">
+    <h2 class="section-title">Profile</h2>
+    <div class="profile-layout clearfix">
+        <div class="contact-form-box">
+            <div class="form-group">
+                <label>Name</label><input class="form-input" ng-model="profileCtrl.user.name" />
+            </div>
+            <div class="form-group">
+                <label>Email</label><input class="form-input" ng-model="profileCtrl.user.email" disabled />
+            </div>
+            <div class="form-group">
+                <label>Phone</label><input class="form-input" ng-model="profileCtrl.user.phone" />
+            </div>
+            <h3>Saved Addresses</h3>
+            <div class="address-box" ng-repeat="a in profileCtrl.user.addresses">
+                <input class="form-input" placeholder="Label" ng-model="a.label" /><input class="form-input"
+                    placeholder="Address line" ng-model="a.line1" /><input class="form-input" placeholder="City"
+                    ng-model="a.city" /><input class="form-input" placeholder="State" ng-model="a.state" /><input
+                    class="form-input" placeholder="Pincode" ng-model="a.pincode" /><input class="form-input"
+                    placeholder="Phone" ng-model="a.phone" /><button class="remove-btn"
+                    ng-click="profileCtrl.removeAddress($index)">
+                    Remove
+                </button>
+            </div>
+            <button class="btn btn-outline" ng-click="profileCtrl.addAddress()">
+                Add Address</button><button class="btn btn-primary" ng-click="profileCtrl.save()">
+                Save Profile
+            </button>
+            <div class="success-msg" ng-if="profileCtrl.saved">Profile saved.</div>
+            <div class="error-msg" ng-if="profileCtrl.error">
+                {{ profileCtrl.error }}
+            </div>
+        </div>
+    </div>
+</section>

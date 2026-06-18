@@ -1,0 +1,28 @@
+﻿<section class="section" ng-controller="WishlistController as wishCtrl">
+    <h2 class="section-title">Wishlist</h2>
+    <div class="empty-state" ng-if="!wishCtrl.products.length">
+        <h3>Your wishlist is empty</h3>
+        <a class="btn btn-primary" href="#!/products">Browse Products</a>
+    </div>
+    <div class="product-grid">
+        <div class="product-card" ng-repeat="product in wishCtrl.products">
+            <a href="#!/products/{{ product.id }}">
+                <div class="product-img-wrap">
+                    <img ng-src="{{ product.image }}" class="product-img" />
+                </div>
+            </a>
+            <div class="product-info">
+                <span class="product-cat">{{ product.category }}</span>
+                <h3 class="product-name">{{ product.name }}</h3>
+                <div class="product-price-row clearfix">
+                    <span class="product-price">Rs.{{ product.price }}</span>
+                </div>
+                <button class="btn btn-primary add-cart-btn" ng-disabled="product.stock === 0"
+                    ng-click="wishCtrl.moveToCart(product)">
+                    Move to Cart</button><button class="remove-btn" ng-click="wishCtrl.remove(product)">
+                    Remove
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

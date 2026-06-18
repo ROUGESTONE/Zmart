@@ -1,0 +1,66 @@
+﻿<section class="section" ng-controller="CheckoutController as checkoutCtrl">
+    <h2 class="section-title">Checkout</h2>
+    <div class="checkout-layout clearfix">
+        <div class="cart-items-col">
+            <div class="contact-form-box">
+                <h3>Delivery Address</h3>
+                <label class="address-choice" ng-repeat="a in checkoutCtrl.user.addresses"><input type="radio"
+                        ng-model="checkoutCtrl.addressId" ng-value="a.id" />
+                    <strong>{{ a.label }}</strong><span>{{ a.line1 }}, {{ a.city }}, {{ a.state }} - {{ a.pincode
+                        }}</span><small>{{ a.phone }}</small></label><a href="#!/profile" class="btn btn-outline"
+                    ng-if="!checkoutCtrl.user.addresses.length">Add Address</a>
+                <h3>Payment Method</h3>
+                <button class="payment-method" ng-repeat="method in checkoutCtrl.paymentMethods"
+                    ng-class="{ active: checkoutCtrl.paymentMethod === method.id }"
+                    ng-click="checkoutCtrl.paymentMethod = method.id">
+                    <span class="payment-radio"></span><strong>{{ method.title }}</strong><small>{{ method.detail
+                        }}</small>
+                </button>
+                <div class="upi-qr-box" ng-if="checkoutCtrl.paymentMethod === 'upi'">
+                    <div class="qr-wrap">
+                        <img ng-src="{{ checkoutCtrl.getUpiQrUrl() }}" class="upi-qr-img" />
+                    </div>
+                    <p class="upi-id">UPI ID: {{ checkoutCtrl.config.upiId }}</p>
+                    <input class="form-input" ng-model="checkoutCtrl.upiReference"
+                        placeholder="UPI transaction/reference ID" />
+                </div>
+            </div>
+        </div>
+        <div class="cart-summary-col">
+            <div class="cart-summary-box">
+                <h3 class="summary-title">Final Summary</h3>
+                <div class="coupon-row">
+                    <input class="form-input" ng-model="checkoutCtrl.couponCode" placeholder="Coupon code" /><button
+                        class="btn btn-outline" ng-click="checkoutCtrl.applyCoupon()">
+                        Apply
+                    </button>
+                </div>
+                <div ng-if="checkoutCtrl.summary">
+                    <div class="summary-row clearfix">
+                        <span>Subtotal</span><span>Rs.{{ checkoutCtrl.summary.subtotal }}</span>
+                    </div>
+                    <div class="summary-row clearfix">
+                        <span>Live Discount</span><span class="text-green">-Rs.{{ checkoutCtrl.summary.liveDiscount
+                            }}</span>
+                    </div>
+                    <div class="summary-row clearfix">
+                        <span>Coupon</span><span class="text-green">-Rs.{{ checkoutCtrl.summary.couponDiscount }}</span>
+                    </div>
+                    <div class="summary-row clearfix">
+                        <span>Delivery</span><span>Rs.{{ checkoutCtrl.summary.deliveryCharge }}</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row summary-total clearfix">
+                        <strong>Total</strong><strong>Rs.{{ checkoutCtrl.summary.total }}</strong>
+                    </div>
+                </div>
+                <button class="btn btn-primary checkout-btn" ng-click="checkoutCtrl.placeOrder()">
+                    Place Order
+                </button>
+                <div class="error-msg" ng-if="checkoutCtrl.error">
+                    {{ checkoutCtrl.error }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

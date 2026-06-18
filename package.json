@@ -1,0 +1,9 @@
+﻿{
+  "name": "zmart-shopping-platform",
+  "version": "2.0.0",
+  "description": "AngularJS ZMart storefront with a Node API and JSON database.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

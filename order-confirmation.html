@@ -1,0 +1,16 @@
+﻿<section class="section" ng-controller="InvoiceController as invCtrl">
+    <div class="success-msg">
+        <h2>Order Confirmed</h2>
+        <p>Your order {{ invCtrl.order.id }} has been placed.</p>
+    </div>
+    <div ng-if="invCtrl.order" class="order-confirm">
+        <p><strong>Total:</strong> Rs.{{ invCtrl.order.total }}</p>
+        <p>
+            <strong>Payment:</strong> {{ invCtrl.order.paymentMethod }} - {{
+            invCtrl.order.paymentStatus }}
+        </p>
+        <p><strong>Delivery:</strong> {{ invCtrl.order.deliveryStatus }}</p>
+        <a class="btn btn-primary" href="#!/invoice/{{ invCtrl.order.id }}">View Invoice</a><a class="btn btn-outline"
+            href="#!/orders">Order History</a>
+    </div>
+</section>
